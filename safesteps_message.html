@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SafeSteps – Seizure Emergency Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta
+    name="description"
+    content="SafeSteps: 3D printed tools to help caregivers with seizure emergencies, available in many languages and shapes."
+  />
+
+  <style>
+    :root {
+      --bg-gradient-start: #020617;
+      --bg-gradient-end: #0b1120;
+      --card-bg: #0b1220;
+      --accent: #7c3aed; /* violet to match the printed tools */
+      --accent-soft: rgba(124, 58, 237, 0.15);
+      --accent-strong: rgba(124, 58, 237, 0.45);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.65);
+      --radius-lg: 1.5rem;
+      --radius-pill: 999px;
+      --max-width: 720px;
+      --transition-fast: 160ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(
+        circle at top,
+        var(--bg-gradient-start),
+        var(--bg-gradient-end) 70%
+      );
+      color: var(--text-main);
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 1.5rem 1.25rem 2.5rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.9rem;
+      background: radial-gradient(circle at 20% 20%, #a855f7, #7c3aed);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #f9fafb;
+      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.7);
+      font-size: 1.1rem;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .tagline-pill {
+      padding: 0.25rem 0.9rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hero-card {
+      width: 100%;
+      background: radial-gradient(circle at top left, #020617, #020617 50%)
+        padding-box,
+        linear-gradient(145deg, var(--accent-soft), rgba(15, 23, 42, 1))
+        border-box;
+      border-radius: var(--radius-lg);
+      border: 1px solid transparent;
+      padding: 1.75rem 1.5rem 1.7rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(
+        circle at top right,
+        var(--accent-strong),
+        transparent 60%
+      );
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0 0 0.6rem 0;
+      font-size: clamp(1.9rem, 5vw, 2.4rem);
+      letter-spacing: -0.04em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 1.1rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 32rem;
+    }
+
+    .hero-bullets {
+      margin: 0 0 1.2rem 0;
+      padding-left: 1.1rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .hero-bullets li {
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius-pill);
+      background-color: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-highlight-dot {
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #f97316, #ea580c);
+      box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.28);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.3rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      color: #f9fafb;
+      box-shadow: 0 16px 35px rgba(124, 58, 237, 0.65);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 45px rgba(124, 58, 237, 0.85);
+    }
+
+    .btn-secondary {
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--text-main);
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    .hero-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-links a {
+      color: #c4b5fd;
+      text-decoration: none;
+    }
+
+    .hero-links a:hover,
+    .hero-links a:focus-visible {
+      text-decoration: underline;
+    }
+
+    .disclaimer {
+      margin-top: 1.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 30rem;
+    }
+
+    footer {
+      margin-top: 1.75rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    footer strong {
+      color: #e5e7eb;
+    }
+
+    @media (min-width: 720px) {
+      .hero-card {
+        padding: 2.1rem 2rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a href="#top" class="brand">
+        <div class="brand-mark">S</div>
+        <div class="brand-text">
+          <span class="brand-title">SafeSteps</span>
+          <span class="brand-subtitle">Seizure emergency tools</span>
+        </div>
+      </a>
+      <div class="tagline-pill">FOR SEIZURE EMERGENCY</div>
+    </header>
+
+    <main id="top">
+      <section class="hero-card" aria-labelledby="safesteps-heading">
+        <div class="hero-inner">
+          <div class="hero-highlight">
+            <span class="hero-highlight-dot" aria-hidden="true"></span>
+            <span>FOR SEIZURE EMERGENCY</span>
+          </div>
+
+          <h1 id="safesteps-heading">SafeSteps</h1>
+
+          <p class="hero-subtitle">
+            3D printed tools to help caregivers with seizure emergencies.
+          </p>
+
+          <ul class="hero-bullets">
+            <li>Available in 21 languages.</li>
+            <li>Different shapes to fit into daily life (keychains, signs, pillboxes, and more).</li>
+          </ul>
+
+          <div class="hero-actions">
+            <!-- This is the original “Learn more: SafeSteps Platform” concept -->
+            <a
+              class="btn btn-primary"
+              href="https://goldenholzlab.github.io/EmergencySafeSteps/"
+            >
+              Learn more: SafeSteps Platform
+            </a>
+
+            <!-- Optional direct link to your short URL -->
+            <a
+              class="btn btn-secondary"
+              href="https://emergencysafesteps.com"
+              target="_blank"
+              rel="noopener"
+            >
+              emergencysafesteps.com
+            </a>
+          </div>
+
+          <div class="hero-links">
+            <span>
+              Prefer the original wording?
+              <strong>Learn more: SafeSteps Platform</strong> at the links above.
+            </span>
+          </div>
+
+          <p class="disclaimer">
+            This page is for education only and does not replace professional medical
+            advice, diagnosis, or treatment. In a seizure emergency, contact your local
+            emergency services.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        <strong>SafeSteps</strong> &mdash; 3D printed tools to help caregivers with seizure emergencies.
+      </p>
+      <p>
+        Available in many languages and shapes, and designed to work together with the
+        SafeSteps Platform.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
