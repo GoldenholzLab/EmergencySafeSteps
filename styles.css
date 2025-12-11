@@ -452,7 +452,7 @@ p {
 .product-image {
   width: 100%;
   aspect-ratio: 4 / 3;          /* consistent frame for all products */
-  object-fit: cover;            /* crop to fill the frame without distortion */
+  object-fit: contain;            /* contain to fill the frame without distortion */
   object-position: center;      /* keep the important middle part */
   border-radius: var(--radius-md);
   margin-bottom: 0.9rem;
