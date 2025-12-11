@@ -451,9 +451,13 @@ p {
 
 .product-image {
   width: 100%;
+  aspect-ratio: 4 / 3;          /* consistent frame for all products */
+  object-fit: cover;            /* crop to fill the frame without distortion */
+  object-position: center;      /* keep the important middle part */
   border-radius: var(--radius-md);
   margin-bottom: 0.9rem;
   display: block;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
 }
 
 .placeholder-image {
