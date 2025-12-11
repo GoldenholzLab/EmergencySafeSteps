@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="SafeSteps: four quick seizure emergency messages for caregivers, with country-specific emergency phone numbers."
+    content="SafeSteps: four concise seizure emergency messages for caregivers, with country-specific emergency phone numbers."
   />
 
   <style>
@@ -144,59 +144,10 @@
       z-index: 1;
     }
 
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.35rem 0.8rem;
-      border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(248, 250, 252, 0.14);
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .status-dot {
-      width: 0.5rem;
-      height: 0.5rem;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, var(--danger), #c2410c);
-      box-shadow: 0 0 0 4px rgba(248, 113, 38, 0.35);
-    }
-
     h1 {
-      margin: 0 0 0.35rem 0;
+      margin: 0 0 1rem 0;
       font-size: clamp(1.5rem, 4.5vw, 1.9rem);
       letter-spacing: -0.03em;
-    }
-
-    .lead {
-      margin: 0 0 1rem 0;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 32rem;
-      line-height: 1.6;
-    }
-
-    .emergency-line {
-      margin: 0 0 0.7rem 0;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .emergency-number {
-      font-weight: 700;
-      color: #fbbf24;
-      letter-spacing: 0.06em;
-    }
-
-    .country-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 1.1rem;
     }
 
     .steps {
@@ -207,15 +158,30 @@
       gap: 0.9rem;
     }
 
-    .step {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.75rem;
-      align-items: flex-start;
-      padding: 0.75rem 0.8rem;
+    details.step {
       border-radius: 1rem;
       background: rgba(15, 23, 42, 0.85);
       border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.2rem 0.2rem 0.4rem;
+    }
+
+    details.step[open] {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(148, 163, 184, 0.9);
+    }
+
+    details.step summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.7rem 0.75rem;
+    }
+
+    details.step summary::-webkit-details-marker {
+      display: none;
     }
 
     .step-number {
@@ -232,10 +198,24 @@
       flex-shrink: 0;
     }
 
-    .step-body h2 {
-      margin: 0 0 0.25rem 0;
+    .step-title {
       font-size: 1rem;
       font-weight: 600;
+      color: #f9fafb;
+    }
+
+    .step-toggle-indicator {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      transition: transform var(--transition-fast);
+    }
+
+    details.step[open] .step-toggle-indicator {
+      transform: rotate(90deg);
+    }
+
+    .step-body {
+      padding: 0 0.9rem 0.6rem 2.9rem;
     }
 
     .step-body p {
@@ -261,22 +241,16 @@
       color: #e5e7eb;
     }
 
-    .source-link {
-      margin-top: 0.4rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .source-link a {
-      color: #a5b4fc;
-      text-decoration: underline;
-    }
-
     footer {
       margin-top: 1.1rem;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       text-align: center;
+    }
+
+    footer a {
+      color: #a5b4fc;
+      text-decoration: underline;
     }
 
     @media (min-width: 640px) {
@@ -299,109 +273,109 @@
 <body>
   <div class="page">
     <header>
-      <div class="brand">
+      <a
+        href="https://goldenholzlab.github.io/EmergencySafeSteps/"
+        class="brand"
+      >
         <div class="brand-mark">S</div>
         <div class="brand-text">
           <span class="brand-title">SafeSteps</span>
           <span class="brand-subtitle">Seizure emergency tools</span>
         </div>
-      </div>
+      </a>
       <div class="tagline-pill">FOR SEIZURE EMERGENCY</div>
     </header>
 
     <main>
       <section class="card" aria-labelledby="safesteps-heading">
         <div class="card-inner">
-          <div class="status-pill" aria-hidden="true">
-            <span class="status-dot"></span>
-            <span>4 emergency messages</span>
-          </div>
-
           <h1 id="safesteps-heading">What to do in a seizure emergency</h1>
 
-          <p class="lead">
-            3D printed tools to help caregivers with seizure emergencies.
-            Available in many languages and different shapes.
-          </p>
-
-          <p class="emergency-line" id="emergency-line">
-            2. <strong>5 MINUTES? CALL <span class="emergency-number" id="emergency-number-inline">911</span>.</strong>
-          </p>
-          <p class="country-label" id="country-label">
-            Emergency number shown for your country (detected approximately by IP). Always use your local official emergency number.
-          </p>
-
           <ol class="steps">
-            <li class="step">
-              <div class="step-number">1</div>
+            <details class="step">
+              <summary>
+                <div class="step-number">1</div>
+                <div class="step-title">NOTHING IN MOUTH.</div>
+                <div class="step-toggle-indicator" aria-hidden="true">›</div>
+              </summary>
               <div class="step-body">
-                <h2>NOTHING IN MOUTH.</h2>
                 <p>
                   There is a myth that you can swallow your tongue and die during a seizure, and therefore people should put something into your mouth to save you. In fact, our lab published a study about this (<a href="https://pubmed.ncbi.nlm.nih.gov/33080482/" target="_blank" rel="noopener">read paper</a>). This is a foolish myth without factual basis. Indeed, many people do put things into the mouth of people having seizures, and then the patient gets hurt (like breaking a tooth) or swallows something that they might choke on. Putting something in the mouth only ADDS danger. Never do it.
                 </p>
               </div>
-            </li>
+            </details>
 
-            <li class="step">
-              <div class="step-number">2</div>
+            <details class="step">
+              <summary>
+                <div class="step-number">2</div>
+                <div class="step-title">
+                  5 MINUTES? CALL <span class="emergency-number" id="emergency-number-text">911</span>.
+                </div>
+                <div class="step-toggle-indicator" aria-hidden="true">›</div>
+              </summary>
               <div class="step-body">
-                <h2>5 MINUTES? CALL <span class="emergency-number" id="emergency-number-text">911</span>.</h2>
                 <p>
                   Seizures that last longer than 5 minutes are likely to cause brain damage. Time is brain. Most seizure last less than 2 minutes, so if a patient is still convulsing after 5 minutes, they are having a life threatening emergency, and there is no time to do anything except call an ambulance, who likely have life-saving medicine onboard.
                 </p>
               </div>
-            </li>
+            </details>
 
-            <li class="step">
-              <div class="step-number">3</div>
+            <details class="step">
+              <summary>
+                <div class="step-number">3</div>
+                <div class="step-title">PROTECT THE HEAD.</div>
+                <div class="step-toggle-indicator" aria-hidden="true">›</div>
+              </summary>
               <div class="step-body">
-                <h2>PROTECT THE HEAD.</h2>
                 <p>
                   Patients that have seizures can injury their head. It is easy to move things away from them, cover sharp things with pillows, blankets, clothing or other soft objects.
                 </p>
               </div>
-            </li>
+            </details>
 
-            <li class="step">
-              <div class="step-number">4</div>
+            <details class="step">
+              <summary>
+                <div class="step-number">4</div>
+                <div class="step-title">LAY DOWN ON SIDE.</div>
+                <div class="step-toggle-indicator" aria-hidden="true">›</div>
+              </summary>
               <div class="step-body">
-                <h2>LAY DOWN ON SIDE.</h2>
                 <p>
                   Patients sometimes can vomit during or after a seizure. If this happens, they should vomit OUT of their body, rather than IN to their lungs, which can cause aspiration pneumonia.
                 </p>
               </div>
-            </li>
+            </details>
           </ol>
 
           <p class="note">
-            <strong>Important:</strong> In a seizure emergency, call your local emergency services. The number shown here is based on an approximate IP-based country lookup and may not always be correct or up to date—verify the emergency number for your country in advance.
-          </p>
-
-          <p class="source-link">
-            Emergency number mappings are based on public references such as
-            <a href="https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers" target="_blank" rel="noopener">
-              lists of national emergency telephone numbers
-            </a>.
+            <strong>Important:</strong> This page is for education only. It does not replace emergency medical care. The emergency number in message 2 is based on an approximate lookup of your country and may not always be correct or up to date. Always follow the official emergency number for your location.
           </p>
         </div>
       </section>
     </main>
 
     <footer>
-      SafeSteps – open-source tools to support caregivers during seizure emergencies.
+      <p>
+        SafeSteps – open-source tools to support caregivers during seizure emergencies.
+      </p>
+      <p>
+        Learn more at the main SafeSteps Platform:
+        <a href="https://goldenholzlab.github.io/EmergencySafeSteps/">
+          https://goldenholzlab.github.io/EmergencySafeSteps/
+        </a>
+      </p>
     </footer>
   </div>
 
   <script>
     // Basic country -> emergency number mapping.
-    // For seizure emergencies, this generally prefers the main ambulance/all-services number.
     const emergencyMap = {
       // North America
       US: { number: "911", label: "911" },
       CA: { number: "911", label: "911" },
       MX: { number: "911", label: "911" },
 
-      // South America (main consolidated numbers where used)
+      // South America (sample)
       BR: { number: "192", label: "192 (ambulance)" },
       AR: { number: "107", label: "107 (ambulance)" },
       CL: { number: "131", label: "131 (ambulance)" },
@@ -428,7 +402,7 @@
       AU: { number: "000", label: "000 (or 112 from mobile)" },
       NZ: { number: "111", label: "111" },
 
-      // Asia (using standard medical / consolidated numbers)
+      // Asia
       JP: { number: "119", label: "119 (ambulance/fire)" },
       CN: { number: "120", label: "120 (ambulance)" },
       IN: { number: "112", label: "112 (all emergencies)" },
@@ -445,28 +419,20 @@
       KE: { number: "999", label: "999 or 112" },
       GH: { number: "999", label: "999" },
 
-      // Default for many EU and other countries adopting 112
+      // Default for 112-style countries
       EU_DEFAULT: { number: "112", label: "112" }
     };
 
-    // Countries where 112 is widely recognized as a consolidated emergency number.
-    // This is not exhaustive, but covers common cases.
     const likely112Countries = new Set([
       "FR","DE","ES","IT","PT","NL","BE","FI","SE","DK","PL","CZ","SK","HU","GR","RO","BG","HR","SI","EE","LV","LT",
       "LU","MT","CY","IS","NO","CH"
     ]);
 
     function setEmergencyNumber(info) {
-      const numberInline = document.getElementById("emergency-number-inline");
       const numberText = document.getElementById("emergency-number-text");
-      const countryLabel = document.getElementById("country-label");
-      const emergencyLine = document.getElementById("emergency-line");
-
-      if (!numberInline || !numberText || !countryLabel) return;
+      if (!numberText) return;
 
       let countryCode = info && info.country ? info.country.toUpperCase() : null;
-      let countryName = info && info.country_name ? info.country_name : null;
-
       let mapping = null;
 
       if (countryCode && emergencyMap[countryCode]) {
@@ -475,35 +441,14 @@
         mapping = emergencyMap.EU_DEFAULT;
       }
 
-      // Fallback if we don't recognize the country.
       if (!mapping) {
         mapping = { number: "911", label: "your local emergency number (for example, 911 or 112)" };
       }
 
-      numberInline.textContent = mapping.number;
       numberText.textContent = mapping.number;
-
-      if (countryCode && countryName) {
-        countryLabel.textContent =
-          "Detected country: " + countryName +
-          ". Emergency number shown here: " + mapping.label +
-          ". Always follow local guidance if you know a different official number.";
-      } else {
-        countryLabel.textContent =
-          "Emergency number shown here is a general suggestion (" +
-          mapping.label +
-          "). Always use the official emergency number for your location.";
-      }
-
-      // Also keep the short line above in sync:
-      emergencyLine.innerHTML =
-        '2. <strong>5 MINUTES? CALL <span class="emergency-number">' +
-        mapping.number +
-        "</span>.</strong>";
     }
 
     // Fetch approximate country from ipapi.co
-    // Docs: https://ipapi.co/api/  (origin lookup via https://ipapi.co/json/)
     fetch("https://ipapi.co/json/")
       .then(function (response) {
         if (!response.ok) throw new Error("Location lookup failed");
