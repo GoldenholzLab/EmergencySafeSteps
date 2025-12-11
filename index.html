@@ -1,507 +1,430 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SafeSteps Platform – Seizure Emergency Tools</title>
-
-  <meta name="description" content="SafeSteps: 3D-printed tools to help caregivers respond quickly and safely to seizure emergencies, including keychains, NFC, QR, signs, and pillboxes." />
-
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Safe Steps | Goldenholz Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        medical: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        emergency: {
+                            red: '#b91c1c', 
+                            bg: '#fef2f2',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-  <!-- Skip links for accessibility -->
-  <a class="skip-link" href="#main">Skip to main content</a>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased leading-relaxed">
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#hero" class="logo">
-        <span class="logo-mark">S</span>
-        <span class="logo-text">SafeSteps</span>
-      </a>
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-heart-pulse text-medical-600 text-2xl"></i>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 hidden sm:block">SafeSteps Platform</span>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 sm:hidden">SafeSteps</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 text-sm font-bold text-slate-700">
+                    <a href="#protocol" class="hover:text-medical-600 transition">The 4 Messages</a>
+                    <a href="#tools" class="hover:text-medical-600 transition">Tools</a>
+                    <a href="#how" class="hover:text-medical-600 transition">How?</a>
+                    <a href="#why" class="hover:text-medical-600 transition">Why?</a>
+                    <a href="#who" class="hover:text-medical-600 transition">Who?</a>
+                </div>
 
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-
-      <nav class="nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="#steps">Emergency Steps</a></li>
-          <li><a href="#why">Why</a></li>
-          <li><a href="#who">Who</a></li>
-          <li><a href="#tools">For Makers</a></li>
-          <li><a href="#products">SafeSteps Tools</a></li>
-          <li><a href="#languages">Languages</a></li>
-          <li><a href="#updates">Updates</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <!-- Hero -->
-    <section id="hero" class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>The SafeSteps Platform</h1>
-          <p class="hero-subtitle">
-            Simple tools for seizure emergencies – designed to help caregivers, families, and bystanders take the right actions in the moment.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#steps" class="btn btn-primary">See the 4 Emergency Steps</a>
-            <a href="#products" class="btn btn-secondary">Explore SafeSteps Tools</a>
-          </div>
-
-          <p class="hero-disclaimer">
-            This site is educational only and does not replace medical care. In an emergency, contact your local emergency services.
-          </p>
-        </div>
-
-        <div class="hero-panel">
-          <div class="hero-card">
-            <img
-              src="images/hero-safesteps-keychain.jpg"
-              alt="SafeSteps keychain and other seizure emergency tools on a keyring"
-              class="hero-image"
-            />
-            <h2>For seizure emergencies</h2>
-            <ul class="hero-list">
-              <li>Portable, 3D-printed tools</li>
-              <li><strong>Free</strong> and open-source</li>
-              <li>Keychain, NFC, &amp; QR options</li>
-              <li>Sign, &amp; pillbox options</li>
-              <li>Available for different country codes</li>
-              <li>Available in many languages</li>
-            </ul>
-            <p class="hero-highlight">
-              Built to be <strong>on the keys, or otherwise nearby</strong> when a seizure happens.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Emergency steps -->
-    <section id="steps" class="section section-alt">
-      <div class="container">
-        <header class="section-header">
-          <h2>The 4 Emergency Messages</h2>
-          <p>
-            These are the core safety messages used across the SafeSteps tools. The goal: clear, simple actions anyone can follow during a seizure emergency.
-          </p>
-        </header>
-
-        <div class="card-grid card-grid-4">
-          <article class="card step-card">
-            <div class="step-number">1</div>
-            <h3>Nothing in the mouth</h3>
-            <p>
-              Do <strong>not</strong> put anything into the person’s mouth. The myth that someone will “swallow their tongue” is false.
-              Objects in the mouth can cause injuries or choking.
-            </p>
-          </article>
-
-          <article class="card step-card">
-            <div class="step-number">2</div>
-            <h3>5 minutes? Call emergency services</h3>
-            <p>
-              If the convulsive seizure lasts longer than about <strong>5 minutes</strong>, it is a medical emergency.
-              Call your local emergency number (e.g., 911 in the United States).
-            </p>
-          </article>
-
-          <article class="card step-card">
-            <div class="step-number">3</div>
-            <h3>Protect the head</h3>
-            <p>
-              Move hard or sharp objects away, and use pillows, clothing, or other soft items to protect the head and body from injury.
-            </p>
-          </article>
-
-          <article class="card step-card">
-            <div class="step-number">4</div>
-            <h3>Lay on the side</h3>
-            <p>
-              When it is safe, gently roll the person onto their side to help keep the airway clear and reduce the risk of aspiration if they vomit.
-            </p>
-          </article>
-        </div>
-
-        <p class="hint">
-          SafeSteps tools express these messages without using words like “epilepsy” or “seizure” to reduce stigma.
-        </p>
-      </div>
-    </section>
-
-    <!-- Why -->
-    <section id="why" class="section">
-      <div class="container section-split">
-        <div>
-          <h2>Why SafeSteps?</h2>
-          <p>
-            Seizure emergencies rarely happen in controlled environments. Handouts and formal teaching are important,
-            but they may not be available at the moment an emergency occurs.
-          </p>
-          <p>
-            The SafeSteps idea: bring a <strong>small, durable, physical object</strong> directly into that moment –
-            something that lives on a keychain, in a wallet, or on a wall, and that reminds caregivers what to do.
-          </p>
-        </div>
-        <div class="key-points">
-          <h3>Design goals</h3>
-          <ul>
-            <li>Always nearby: keychain, pillbox, card, or sign</li>
-            <li>Heat-stable, durable, recyclable (e.g., PETG)</li>
-            <li>Clear, concise, stigma-free language</li>
-            <li>Usable worldwide, across many languages</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Who -->
-    <section id="who" class="section section-alt">
-      <div class="container section-split">
-        <div>
-          <h2>Who is behind this?</h2>
-          <p>
-            The SafeSteps Platform is led by <strong>Daniel Goldenholz, MD, PhD, FAES</strong>, Director of the
-            <em>Epilepsy + Data Science Lab</em> at Harvard Beth Israel Deaconess Medical Center. He is a board-certified
-            epileptologist and is very motivated to improve life for people with epilepsy.
-          </p>
-        </div>
-        <div class="bio-card">
-          <h3>Project focus</h3>
-          <ul>
-            <li>Seizure emergency education for caregivers and bystanders</li>
-            <li>Open-source, improvable 3D designs</li>
-            <li>Global accessibility via multiple languages and formats</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- For makers / tools -->
-    <section id="tools" class="section">
-      <div class="container">
-        <header class="section-header">
-          <h2>For Makers and 3D Printing Enthusiasts</h2>
-          <p>
-            SafeSteps is intentionally designed to be shared, remixed, and improved by the worldwide 3D printing community.
-          </p>
-        </header>
-
-        <div class="section-split">
-          <div>
-            <h3>What you need</h3>
-            <ul>
-              <li>FDM 3D printer (multicolor required for some of our designs)</li>
-              <li>Heat-stable, recyclable materials such as PETG</li>
-              <li>Basic familiarity with multi-color printing workflows</li>
-            </ul>
-            <p>
-              Single color 3D printers can be purchased for less than US$200. Many consumer multicolor 3D printers under ~US$500 can handle all these designs; more advanced printers can provide extra benefits. 
-            </p>
-          </div>
-          <div>
-            <h3>Design workflow</h3>
-            <p>
-              Early prototypes were made in TinkerCAD. Over time, designs moved into more advanced tools such as Fusion 360,
-              VR design with Gravity Sketch, and AI-assisted parameterized designs in OpenSCAD for flexible customization.
-            </p>
-            <p>
-              The OpenSCAD approach allows rapid generation of variants (e.g., different emergency numbers, languages, and formats),
-              while keeping the core logic consistent.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SafeSteps products -->
-    <section id="products" class="section section-alt">
-      <div class="container">
-        <header class="section-header">
-          <h2>SafeSteps Tools</h2>
-          <p>
-            Multiple form factors share the same core safety messages, so different people can choose what fits their life best.
-            All designs are open source (free to download and print without restriction).
-          </p>
-        </header>
-
-        <div class="card-grid">
-          <!-- SafeSteps T -->
-          <article class="card product-card">
-            <h3>SafeSteps T (Tactile Keychain)</h3>
-            <img
-              src="images/product-safesteps-t.jpg"
-              alt="SafeSteps T tactile keychain with raised lettering"
-              class="product-image"
-            />
-            <p>
-              A two-color 3D-printed keychain, about the size of a standard house key, with slightly raised letters for tactile support.
-              It is designed to withstand being scratched by keys while staying readable.
-            </p>
-            <p>
-              Because it includes the local emergency number, there are separate versions for different countries.
-              Sets are available for English-speaking countries with the appropriate emergency codes.
-            </p>
-            <p class="product-links">
-              <a href="https://www.printables.com/model/1330967-seizure-emergency-safesteps-platform-safesteps-t" target="_blank" rel="noopener">
-                Download model files on Printables
-              </a>
-            </p>
-          </article>
-
-          <!-- SafeSteps NFC -->
-          <article class="card product-card">
-            <h3>SafeSteps NFC</h3>
-            <img
-              src="images/product-safesteps-nfc.jpg"
-              alt="SafeSteps NFC fob with recessed area for an NFC tag"
-              class="product-image"
-            />
-            <p>
-              A clean, text-free fob designed for people who prefer not to have visible wording. When a modern smartphone is held near the NFC tag,
-              it opens a simple website with the same SafeSteps emergency instructions.
-            </p>
-            <p class="product-links">
-              <a href="https://www.printables.com/model/1331463-seizure-emergency-safesteps-nfc" target="_blank" rel="noopener">
-                Download NFC model files
-              </a>
-            </p>
-          </article>
-
-          <!-- SafeSteps QR -->
-          <article class="card product-card">
-            <h3>SafeSteps QR</h3>
-            <img
-              src="images/product-safesteps-qr.jpg"
-              alt="SafeSteps QR 3D-printed keychain with a raised QR code"
-              class="product-image"
-            />
-            <p>
-              A 3D-printed QR code keychain. Scanning it with a smartphone camera brings up a simple website explaining seizure safety steps.
-              Unlike a paper QR code, the 3D-printed version is built to be durable and always on hand.
-            </p>
-            <p class="product-links">
-              <a href="https://www.printables.com/model/1331502-seizure-emergency-safesteps-qr" target="_blank" rel="noopener">
-                Download QR model files
-              </a>
-            </p>
-          </article>
-
-          <!-- SafeSteps Sign -->
-          <article class="card product-card">
-            <h3>SafeSteps Sign</h3>
-            <img
-              src="images/product-safesteps-sign.jpg"
-              alt="SafeSteps Sign showing the four seizure emergency steps"
-              class="product-image"
-            />
-            <p>
-              A simple sign approximately the size of a business card, suitable for hanging, magnet mounting, or carrying in a wallet.
-              Generated using the same AI-assisted system as SafeSteps T, it supports multiple languages and emergency numbers.
-            </p>
-            <p class="product-links">
-              <a href="https://www.printables.com/model/1345444-seizure-emergency-safesteps-sign-multilingual" target="_blank" rel="noopener">
-                Download sign model files
-              </a>
-            </p>
-          </article>
-
-          <!-- SafeSteps Pillbox -->
-          <article class="card product-card">
-            <h3>SafeSteps Pillbox</h3>
-            <img
-              src="images/product-safesteps-pillbox.jpg"
-              alt="SafeSteps pillbox with days of the week and emergency messages on the sides"
-              class="product-image"
-            />
-            <p>
-              A pillbox with compartments for each day of the week and a sliding cover. The four emergency messages are printed on the sides,
-              and versions are available for multiple languages and country codes.
-            </p>
-            <p class="product-links">
-              <a href="https://www.printables.com/model/1382701-seizure-emergency-safesteps-platform-safesteps-pil#how-was-this-made-" target="_blank" rel="noopener">
-                Download pillbox model files
-              </a>
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Languages -->
-    <section id="languages" class="section">
-      <div class="container">
-        <header class="section-header">
-          <h2>Languages and Global Reach</h2>
-          <p>
-            SafeSteps designs are being expanded into multiple languages using AI-assisted translation, with medical review where possible.
-          </p>
-        </header>
-
-        <div class="section-split">
-          <div>
-            <h3>Languages currently generated (experimental)</h3>
-            <p>
-              Experimental versions (awaiting verification) exist for a large set of languages intended to cover billions of people worldwide, including:
-            </p>
-            <div class="pill-list">
-              <span class="pill">English</span>
-              <span class="pill">普通话</span>
-              <span class="pill">हिन्दी</span>
-              <span class="pill">Español</span>
-              <span class="pill">العربية الفصحى</span>
-              <span class="pill">Français</span>
-              <span class="pill">বাংলা</span>
-              <span class="pill">Português</span>
-              <span class="pill">Русский</span>
-              <span class="pill">Bahasa Indonesia</span>
-              <span class="pill">اردو</span>
-              <span class="pill">Deutsch</span>
-              <span class="pill">日本語</span>
-              <span class="pill">Naijá</span>
-              <span class="pill">العربية المصرية</span>
-              <span class="pill">मराठी</span>
-              <span class="pill">Tiếng Việt</span>
-              <span class="pill">తెలుగు</span>
-              <span class="pill">Hausa</span>
-              <span class="pill">Türkçe</span>
-              <span class="pill">עברית</span>
-              <span class="pill">ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔</span>
+                <!-- Mobile Menu Button (Placeholder for simplicity) -->
+                <div class="md:hidden text-slate-700">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </div>
             </div>
-          </div>
+        </div>
+        <!-- Mobile Menu Bar (Simple) -->
+        <div class="md:hidden flex justify-around bg-slate-50 border-t border-slate-200 py-2 text-xs font-bold text-slate-700">
+            <a href="#protocol">Protocol</a>
+            <a href="#tools">Tools</a>
+            <a href="#why">Why</a>
+            <a href="#who">Who</a>
+        </div>
+    </nav>
 
-          <div class="language-panel">
-            <h3>Verification</h3>
-            <p>
-              At present, the medically verified language set includes:
+    <!-- Header Section (Dark Background) -->
+    <header class="pt-16 pb-12 bg-slate-900 text-white">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-white">
+                The Seizure Emergency <span class="text-medical-500">SafeSteps Platform</span>
+            </h1>
+            <p class="text-xl text-slate-300 mb-8 font-medium">
+                Educating caregivers. Saving lives.
             </p>
-            <ul>
-              <li><strong>English</strong></li>
-            </ul>
-            <p>
-              If you are medically trained in epilepsy and a native speaker of one of the other languages, your feedback on cultural and
-              medical accuracy is especially welcome.
+            
+            <!-- New Colored Box Text -->
+            <div class="bg-indigo-600 text-white p-5 rounded-lg shadow-lg inline-block mb-10 max-w-2xl mx-auto border border-indigo-500">
+                <p class="font-serif text-lg italic tracking-wide">
+                    "Witness a seizure emergency? Take Safesteps."
+                </p>
+            </div>
+
+            <!-- Image Section -->
+            <div class="mb-4">
+                <img src="hero-safesteps-keychain.jpg" alt="SafeSteps Platform Overview" class="rounded-xl shadow-2xl border-4 border-slate-700 mx-auto w-full h-auto object-cover">
+            </div>
+        </div>
+    </header>
+
+    <!-- The 4 Core Messages (Emergency Protocol) -->
+    <section id="protocol" class="py-16 bg-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">The 4 Core Messages</h2>
+                <p class="text-slate-600 font-semibold mt-2">Critical steps to take during a seizure.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 1. Nothing in Mouth -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border-t-4 border-red-600">
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-700 text-xl font-bold">1</div>
+                            <h3 class="text-2xl font-bold text-slate-900">NOTHING IN MOUTH</h3>
+                        </div>
+                        <p class="text-slate-700 mb-4 font-medium">
+                            There is a myth that you can swallow your tongue and die during a seizure, and therefore people should put something into your mouth to save you. In fact, our lab published a study about this. This is a foolish myth without factual basis.
+                        </p>
+                        <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                            <p class="text-red-900 text-sm font-bold">
+                                <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+                                Indeed, many people do put things into the mouth of people having seizures, and then the patient gets hurt (like breaking a tooth) or swallows something that they might choke on. Putting something in the mouth only ADDS danger. Never do it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 5 Minutes -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border-t-4 border-orange-500">
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-700 text-xl font-bold">2</div>
+                            <h3 class="text-2xl font-bold text-slate-900">5 MINUTES? CALL 911</h3>
+                        </div>
+                        <p class="text-slate-700 mb-4 font-medium">
+                            <span class="font-bold text-black">Convulsive seizures</span> that last longer than 5 minutes are likely to cause brain damage. <span class="font-bold text-slate-900">Time is brain.</span>
+                        </p>
+                        <p class="text-slate-700 font-medium">
+                            Most seizures last less than 2 minutes, so if a patient is still convulsing after 5 minutes, they are having a life threatening emergency, and there is no time to do anything except call an ambulance, who likely have life-saving medicine onboard.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. Protect The Head -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border-t-4 border-blue-500">
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-xl font-bold">3</div>
+                            <h3 class="text-2xl font-bold text-slate-900">PROTECT THE HEAD</h3>
+                        </div>
+                        <p class="text-slate-700 font-medium">
+                            Patients that have seizures can injure their head. It is easy to move things away from them, cover sharp things with pillows, blankets, clothing or other soft objects.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Lay Down on Side -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border-t-4 border-emerald-500">
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 text-xl font-bold">4</div>
+                            <h3 class="text-2xl font-bold text-slate-900">LAY DOWN ON SIDE</h3>
+                        </div>
+                        <p class="text-slate-700 font-medium">
+                            Patients sometimes can vomit during or after a seizure. If this happens, they should vomit OUT of their body, rather than IN to their lungs, which can cause aspiration pneumonia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- With What Tools? -->
+    <section id="tools" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
+                <i class="fa-solid fa-screwdriver-wrench text-medical-600"></i> WITH WHAT TOOLS?
+            </h2>
+            
+            <p class="text-lg text-slate-800 mb-8 max-w-3xl font-medium">
+                The goal was something very easy to read, something non-stigmatizing—for example, not using the words "epilepsy" or "seizure"—and something pretty simple that most people could understand without a whole lot of explanation.
             </p>
-          </div>
+
+            <!-- Language/Localization Note -->
+            <div class="bg-indigo-50 border-indigo-200 border-l-4 border-l-indigo-600 p-6 rounded-r-lg mb-12 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <i class="fa-solid fa-language text-indigo-600 text-2xl mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-indigo-900 text-lg mb-2">Available in 21 Languages</h4>
+                        <p class="text-indigo-900 font-medium mb-4">
+                            SafeSteps T is available in 21 languages, and different shapes. Because there is written text on this keychain, it includes the country-specific emergency phone number (e.g., 911 in the USA, 112 in Europe).
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 text-sm font-semibold text-indigo-800">
+                            <span>• English</span>
+                            <span>• Spanish (Español)</span>
+                            <span>• French (Français)</span>
+                            <span>• German (Deutsch)</span>
+                            <span>• Italian (Italiano)</span>
+                            <span>• Portuguese</span>
+                            <span>• Hebrew (עברית)</span>
+                            <span>• Arabic (العربية)</span>
+                            <span>• Tagalog (ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔)</span>
+                            <span>• Russian (Русский)</span>
+                            <span>• Chinese (中文)</span>
+                            <span>• Japanese (日本語)</span>
+                            <span>• Korean (한국어)</span>
+                            <span>• Hindi (हिन्दी)</span>
+                            <span>• Bengali (বাংলা)</span>
+                            <span>• Turkish (Türkçe)</span>
+                            <span>• Vietnamese (Tiếng Việt)</span>
+                            <span>• Swahili (Kiswahili)</span>
+                            <span>• Indonesian</span>
+                            <span>• Urdu (اردو)</span>
+                            <span>• Thai (ไทย)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tool 1: SafeSteps T -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-300 flex flex-col hover:border-indigo-400 transition-colors shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-indigo-700 text-3xl"><i class="fa-solid fa-key"></i></div>
+                        <img src="https://placehold.co/100x100/cbd5e1/334155?text=Key" alt="SafeSteps T Keychain" class="w-16 h-16 rounded object-cover border border-slate-300">
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">SafeSteps T (Tactile)</h3>
+                    <p class="text-sm text-slate-700 font-medium mb-4 flex-grow">
+                        A keychain printed in 2 colors with a tactile component (raised letters). Includes the country-specific emergency phone number.
+                    </p>
+                    <div class="mt-auto">
+                        <span class="inline-block bg-indigo-100 text-indigo-900 text-xs px-2 py-1 rounded font-bold mb-4">Works well on keys</span>
+                        <a href="https://www.printables.com/model/1330967-seizure-emergency-safesteps-platform-safesteps-t" target="_blank" class="block w-full text-center bg-white border-2 border-slate-300 hover:bg-slate-100 hover:border-slate-400 text-slate-800 font-bold py-2 px-4 rounded transition-colors text-sm">
+                            <i class="fa-solid fa-download mr-1"></i> Download 3D Model
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tool 2: NFC -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-300 flex flex-col hover:border-blue-400 transition-colors shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-blue-700 text-3xl"><i class="fa-solid fa-wifi"></i></div>
+                        <img src="https://placehold.co/100x100/cbd5e1/334155?text=NFC" alt="SafeSteps NFC" class="w-16 h-16 rounded object-cover border border-slate-300">
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">SafeSteps NFC</h3>
+                    <p class="text-sm text-slate-700 font-medium mb-4 flex-grow">
+                        Designed for those who prefer no visible text. A small, clean fob with Near Field Communication technology.
+                    </p>
+                    <div class="mt-auto">
+                        <span class="inline-block bg-blue-100 text-blue-900 text-xs px-2 py-1 rounded font-bold mb-4">Works with any modern cellphone</span>
+                        <a href="https://www.printables.com/model/1331502-seizure-emergency-safesteps-qr" target="_blank" class="block w-full text-center bg-white border-2 border-slate-300 hover:bg-slate-100 hover:border-slate-400 text-slate-800 font-bold py-2 px-4 rounded transition-colors text-sm">
+                            <i class="fa-solid fa-download mr-1"></i> Download 3D Model
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tool 3: QR -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-300 flex flex-col hover:border-purple-400 transition-colors shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-purple-700 text-3xl"><i class="fa-solid fa-qrcode"></i></div>
+                        <img src="https://placehold.co/100x100/cbd5e1/334155?text=QR" alt="SafeSteps QR" class="w-16 h-16 rounded object-cover border border-slate-300">
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">SafeSteps QR</h3>
+                    <p class="text-sm text-slate-700 font-medium mb-4 flex-grow">
+                        Quick Response code version. Scans to dynamic emergency instructions based on location.
+                    </p>
+                    <div class="mt-auto">
+                        <span class="inline-block bg-purple-100 text-purple-900 text-xs px-2 py-1 rounded font-bold mb-4">Just show it to your cellphone camera</span>
+                        <a href="https://www.printables.com/model/1331502-seizure-emergency-safesteps-qr" target="_blank" class="block w-full text-center bg-white border-2 border-slate-300 hover:bg-slate-100 hover:border-slate-400 text-slate-800 font-bold py-2 px-4 rounded transition-colors text-sm">
+                            <i class="fa-solid fa-download mr-1"></i> Download 3D Model
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tool 4: Pillbox -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-300 flex flex-col hover:border-emerald-400 transition-colors shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-emerald-700 text-3xl"><i class="fa-solid fa-pills"></i></div>
+                        <img src="https://placehold.co/100x100/cbd5e1/334155?text=Pillbox" alt="SafeSteps Pillbox" class="w-16 h-16 rounded object-cover border border-slate-300">
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">SafeSteps Pillbox</h3>
+                    <p class="text-sm text-slate-700 font-medium mb-4 flex-grow">
+                        A container for medications that integrates the safety steps into its design.
+                    </p>
+                    <div class="mt-auto">
+                        <span class="inline-block bg-emerald-100 text-emerald-900 text-xs px-2 py-1 rounded font-bold mb-4">Helpful for pill organizing</span>
+                        <a href="https://www.printables.com/model/1382701-seizure-emergency-safesteps-platform-safesteps-pil" target="_blank" class="block w-full text-center bg-white border-2 border-slate-300 hover:bg-slate-100 hover:border-slate-400 text-slate-800 font-bold py-2 px-4 rounded transition-colors text-sm">
+                            <i class="fa-solid fa-download mr-1"></i> Download 3D Model
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tool 5: Sign -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-300 flex flex-col hover:border-orange-400 transition-colors shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-orange-700 text-3xl"><i class="fa-solid fa-sign-hanging"></i></div>
+                        <img src="https://placehold.co/100x100/cbd5e1/334155?text=Sign" alt="SafeSteps Sign" class="w-16 h-16 rounded object-cover border border-slate-300">
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">SafeSteps Sign</h3>
+                    <p class="text-sm text-slate-700 font-medium mb-4 flex-grow">
+                        Larger format signage for schools, offices, or homes to keep instructions visible.
+                    </p>
+                    <div class="mt-auto">
+                        <span class="inline-block bg-orange-100 text-orange-900 text-xs px-2 py-1 rounded font-bold mb-4">Hang on the wall or keep in wallet</span>
+                        <a href="https://www.printables.com/model/1345444-seizure-emergency-safesteps-sign-multilingual" target="_blank" class="block w-full text-center bg-white border-2 border-slate-300 hover:bg-slate-100 hover:border-slate-400 text-slate-800 font-bold py-2 px-4 rounded transition-colors text-sm">
+                            <i class="fa-solid fa-download mr-1"></i> Download 3D Model
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Updates -->
-    <section id="updates" class="section section-alt">
-      <div class="container">
-        <header class="section-header">
-          <h2>Update Log</h2>
-          <p>
-            SafeSteps is a living project. Designs and infrastructure evolve as new needs and ideas appear.
-          </p>
-        </header>
-
-        <ul class="timeline">
-           <li class="timeline-item">
-             <div class="timeline-date">2025-12-10</div>
-              <div class="timeline-content">
-                <p>
-                Updated website design.
-              </p>
+    <!-- How Section -->
+    <section id="how" class="py-16 bg-medical-900 text-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-layer-group text-medical-500"></i> HOW?
+                    </h2>
+                    <p class="text-slate-200 mb-6 text-lg leading-relaxed font-medium">
+                        For additional inspiration, the designs were evaluated and worked with in VR using GravitySketch.
+                    </p>
+                    <p class="text-slate-200 text-lg leading-relaxed font-medium">
+                        Once it became clear that multiple versions will be needed, an AI-assisted version was developed based on the earlier prototypes to be rendered with OpenSCAD.
+                    </p>
+                </div>
+                <div class="md:w-1/2 bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 shadow-lg">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-vr-cardboard text-3xl text-medical-500"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Virtual Reality Design</h4>
+                                <p class="text-sm text-slate-300">Prototyping in GravitySketch</p>
+                            </div>
+                        </div>
+                        <div class="h-px bg-white/20"></div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-cube text-3xl text-medical-500"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">OpenSCAD Rendering</h4>
+                                <p class="text-sm text-slate-300">AI-assisted programmatic 3D modeling</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </li>
-          <li class="timeline-item">
-            <div class="timeline-date">2025-08-12</div>
-            <div class="timeline-content">
-              <p>
-                Additional language (ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔) added. Updated OpenSCAD for SafeSteps Pillbox released; pillbox added to the platform.
-              </p>
-            </div>
-          </li>
-          <li class="timeline-item">
-            <div class="timeline-date">2025-07-06</div>
-            <div class="timeline-content">
-              <p>
-                עברית added. Languages and OpenSCAD support for SafeSteps T and SafeSteps Sign merged.
-              </p>
-            </div>
-          </li>
-          <li class="timeline-item">
-            <div class="timeline-date">2025-07-03</div>
-            <div class="timeline-content">
-              <p>
-                Shorter link introduced: <a href="https://emergencysafesteps.com" target="_blank" rel="noopener">emergencysafesteps.com</a>.
-              </p>
-            </div>
-          </li>
-          <li class="timeline-item">
-            <div class="timeline-date">2025-07-02</div>
-            <div class="timeline-content">
-              <p>
-                Experimental versions of ~20 languages added for the SafeSteps T keychain.
-              </p>
-            </div>
-          </li>
-          <li class="timeline-item">
-            <div class="timeline-date">2025-06-29</div>
-            <div class="timeline-content">
-              <p>
-                QR codes and NFC taps now direct to a SafeSteps website that dynamically lists the correct emergency phone number based on country.
-              </p>
-            </div>
-          </li>
-        </ul>
-      </div>
+        </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="container section-split">
-        <div>
-          <h2>Contact &amp; Collaboration</h2>
-          <p>
-            SafeSteps grows through feedback, translation, and better designs. Makers, clinicians, patients, caregivers,
-            and researchers are all welcome to get involved.
-          </p>
-          <ul>
-            <li>Want to help design additional versions?</li>
-            <li>Interested in translating SafeSteps into another language?</li>
-            <li>Have ideas for new formats or improvements?</li>
-          </ul>
+    <!-- Why Section (Moved) -->
+    <section id="why" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-blue-50 border-l-4 border-blue-600 text-left p-8 rounded-r-lg shadow-sm">
+                <h2 class="text-xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+                    <i class="fa-regular fa-circle-question"></i> WHY?
+                </h2>
+                <p class="mb-4 text-slate-800 font-medium leading-relaxed">
+                    This is a project that was born out of the necessity to teach caregivers, family members, physicians, and other people how to properly react to a seizure emergency period. Although handouts exist and courses exist, one problem is that neither of these things would be very likely to be available at the time that they are needed, that is, at the time of an emergency.
+                </p>
+                <p class="font-bold text-blue-900 text-lg">
+                    So a simple idea was born: Bring some kind of small, simple physical object right to the emergency itself.
+                </p>
+            </div>
         </div>
-        <div class="contact-card">
-          <h3>Get in touch</h3>
-          <p>
-            Email: <a href="mailto:daniel.goldenholz@bidmc.harvard.edu">daniel.goldenholz@bidmc.harvard.edu</a>
-          </p>
-          <p>
-            When contacting, mention your background (e.g., caregiver, clinician, maker, translator) and how you’d like to contribute.
-          </p>
-        </div>
-      </div>
     </section>
-  </main>
 
-  <button class="back-to-top" aria-label="Back to top">
-    ↑
-  </button>
+    <!-- Who Section -->
+    <section id="who" class="py-16 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8">WHO?</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 inline-block text-left">
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="bg-medical-100 rounded-full w-24 h-24 flex items-center justify-center text-4xl text-medical-600 border-4 border-white shadow-md">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">Daniel Goldenholz, MD, PhD, FAES</h3>
+                        <p class="text-medical-700 font-bold mb-1">Director, Epilepsy + Data Science Lab</p>
+                        <p class="text-sm text-slate-700 font-medium mb-3">Harvard Beth Israel Deaconess Medical Center</p>
+                        <a href="mailto:daniel.goldenholz@bidmc.harvard.edu" class="text-sm text-medical-700 hover:text-medical-900 hover:underline mb-4 block font-semibold">
+                            <i class="fa-solid fa-envelope mr-1"></i> daniel.goldenholz@bidmc.harvard.edu
+                        </a>
+                        <p class="text-slate-800 italic border-l-4 border-medical-500 pl-4 mt-4 font-medium">
+                            "He is a board certified epileptologist and he absolutely hates epilepsy."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>Seizure Emergency SafeSteps Platform &mdash; open-source designs to support caregivers worldwide.</p>
-      <p class="footer-meta">
-      </p>
-    </div>
-  </footer>
+    <!-- Updates Log -->
+    <section class="py-12 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-xl font-bold text-slate-800 mb-6 uppercase tracking-wider text-sm">Update Log</h3>
+            <div class="space-y-4">
+                <div class="flex gap-4 items-start">
+                    <span class="font-mono text-sm text-slate-600 font-bold min-w-[80px]">8/12/25</span>
+                    <p class="text-slate-800 text-sm font-medium">ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔ added. New updated openSCAD for SafeSteps Pillbox added. Pillbox added!</p>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="font-mono text-sm text-slate-600 font-bold min-w-[80px]">7/6/25</span>
+                    <p class="text-slate-800 text-sm font-medium">עברית added. Languages and openSCAD for SafeSteps T and Sign now merged.</p>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="font-mono text-sm text-slate-600 font-bold min-w-[80px]">7/2/25</span>
+                    <p class="text-slate-800 text-sm font-medium">We are adding experimental versions of 20 languages for the SafeSteps T keychain.</p>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="font-mono text-sm text-slate-600 font-bold min-w-[80px]">6/29/25</span>
+                    <p class="text-slate-800 text-sm font-medium">Now QR codes or NFC taps will lead to the SafeSteps website, which will dynamically list the correct emergency phone number for the relevant country.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-center md:text-left">
+                <p class="text-sm font-medium">&copy; Epilepsy + Data Science Lab. All rights reserved.</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="text-slate-400 hover:text-white transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors"><i class="fa-solid fa-globe text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
