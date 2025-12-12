@@ -202,10 +202,13 @@
       color: #f9fafb;
     }
 
+    /* Updated Arrow Styles */
     .step-toggle-indicator {
-      font-size: 1.2rem;
-      color: var(--text-muted);
+      font-size: 2.5rem; /* Increased size significantly */
+      color: var(--accent); /* Changed to purple */
+      line-height: 1;
       transition: transform var(--transition-fast);
+      transform-origin: center;
     }
 
     details.step[open] .step-toggle-indicator {
@@ -281,7 +284,7 @@
             <details class="step">
               <summary>
                 <div class="step-number">1</div>
-                <div class="step-title">NOTHING IN MOUTH.</div>
+                <div class="step-title">NOTHING IN MOUTH</div>
                 <div class="step-toggle-indicator" aria-hidden="true">›</div>
               </summary>
               <div class="step-body">
@@ -295,7 +298,7 @@
               <summary>
                 <div class="step-number">2</div>
                 <div class="step-title">
-                  5 MINUTES? CALL <span class="emergency-number" id="emergency-number-text">911</span>.
+                  5 MINUTES? CALL <span class="emergency-number" id="emergency-number-text">911</span>
                 </div>
                 <div class="step-toggle-indicator" aria-hidden="true">›</div>
               </summary>
@@ -309,7 +312,7 @@
             <details class="step">
               <summary>
                 <div class="step-number">3</div>
-                <div class="step-title">PROTECT THE HEAD.</div>
+                <div class="step-title">PROTECT THE HEAD</div>
                 <div class="step-toggle-indicator" aria-hidden="true">›</div>
               </summary>
               <div class="step-body">
@@ -322,12 +325,12 @@
             <details class="step">
               <summary>
                 <div class="step-number">4</div>
-                <div class="step-title">LAY DOWN ON SIDE.</div>
+                <div class="step-title">LAY DOWN ON SIDE</div>
                 <div class="step-toggle-indicator" aria-hidden="true">›</div>
               </summary>
               <div class="step-body">
                 <p>
-                  Patients sometimes can vomit during or after a seizure. If this happens, they should vomit OUT of their body, rather than IN to their lungs, which can cause aspiration pneumonia.
+                  Patients sometimes can vomit during or after a seizure. If this happens, they should vomit OUT of their body, rather than IN to their lungs, which can cause aspiration pneumonia. Therefore it is important to lay the patient on their side.
                 </p>
               </div>
             </details>
@@ -338,9 +341,11 @@
 
     <footer>
       <p>
-        Learn more at the main SafeSteps Platform:
+      3D printed tools to help caregivers with seizure emergencies. 
+Available in 21 languages, and different shapes.
+        Learn more at the main
         <a href="https://goldenholzlab.github.io/EmergencySafeSteps/">
-          https://goldenholzlab.github.io/EmergencySafeSteps/
+          SafeSteps Platform.
         </a>
       </p>
     </footer>
